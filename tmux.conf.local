@@ -8,7 +8,13 @@
 
 set -s set-clipboard on
 
+set -gq allow-passthrough on
+set -g visual-activity off
+set-option -g focus-events on
 
+bind -n F2 previous-window
+bind -n F3 next-window
+bind -n F5 source-file ~/.tmux.conf \; display "Config Reloaded!"
 # -- bindings ------------------------------------------------------------------
 
 # preserve tmux stock bindings,

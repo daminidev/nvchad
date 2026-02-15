@@ -7,7 +7,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 -- 3. Configure standard servers (HTML, CSS)
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "ts_ls", "eslint" }
 
 for _, lsp in ipairs(servers) do
   vim.lsp.config(lsp, {
@@ -22,7 +22,7 @@ for _, lsp in ipairs(servers) do
   vim.lsp.enable(lsp)
 end
 
--- 4. Specific configuration for Intelephense (PHP 5.6)
+-- 4. Specific configuration for Intelephense 
 vim.lsp.config("intelephense", {
   options = {
     on_attach = on_attach,
