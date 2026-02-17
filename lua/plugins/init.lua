@@ -77,5 +77,24 @@ return {
         }
       }
     }
+  },
+  {
+    'stevearc/aerial.nvim',
+    -- This ensures the plugin stays completely unloaded until you trigger the command
+    cmd = { "AerialToggle", "AerialNavToggle", "AerialInfo" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    opts = {
+      -- Optional: By default, aerial tries LSP first, then Treesitter.
+      -- This is perfect for your PHP and JS stack.
+      backends = { "lsp", "treesitter", "markdown", "man" },
+
+      -- Optional: visually align the aerial window to the right
+      layout = {
+        default_direction = "right",
+      },
+    },
   }
 }
