@@ -1,3 +1,8 @@
+local backend = "sixel" -- Default for WezTerm / others
+if os.getenv("KITTY_PID") or os.getenv("TERM") == "xterm-kitty" then
+  backend = "kitty"
+end
+
 return {
   {
     "stevearc/conform.nvim",
@@ -65,7 +70,7 @@ return {
     lazy = false,
     opts = {
       processor = "magick_cli",
-      backend = "sixel",
+      backend = backend,
       tmux_show_only_in_active_window = true,
       integrations = {
         markdown = {

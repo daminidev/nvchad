@@ -14,7 +14,8 @@ set-option -g focus-events on
 
 bind -n F2 previous-window
 bind -n F3 next-window
-bind -n F5 source-file ~/.tmux.conf \; display "Config Reloaded!"
+bind -n F4 last-window
+bind -n F5 source-file ~/.connfig/tmux/tmux.conf \; display "Config Reloaded from ~/.config/tmux.conf"
 # -- bindings ------------------------------------------------------------------
 
 # preserve tmux stock bindings,
@@ -224,7 +225,7 @@ tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_11"
 tmux_conf_theme_window_status_current_attr="bold"
 #tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
 #tmux_conf_theme_window_status_current_format="#{circled_window_index} #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
-tmux_conf_theme_window_status_current_format="#{circled_window_index}  #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,,}"
+tmux_conf_theme_window_status_current_format="#{circled_window_index} #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,,}"
 #tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
 
 # window activity status style
@@ -284,8 +285,8 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{username}
 #     - #{username_ssh}
 #tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_left="  #S | 󱑂 %R | 󰟙 #{pretty_pane_current_path} \uE0B1"
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} ,  %d %b | #{username}#{root} | #{hostname} "
+tmux_conf_theme_status_left="  #S | 󱑂 %R |   \uE0B1"
+tmux_conf_theme_status_right="󰟙 #{pretty_pane_current_path}  #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} ,  %d %b | #{username}#{root} | #{hostname} "
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_4"
