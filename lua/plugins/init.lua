@@ -5,12 +5,29 @@ end
 
 return {
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      return require "configs.nvimtree"
+    end
+  },
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    opts = function ()
+      return require "configs/autosession"
+    end
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-
-  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      return require "configs.cmp"
+    end
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()

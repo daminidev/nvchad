@@ -15,7 +15,7 @@ set-option -g focus-events on
 bind -n F2 previous-window
 bind -n F3 next-window
 bind -n F4 last-window
-bind -n F5 source-file ~/.connfig/tmux/tmux.conf \; display "Config Reloaded from ~/.config/tmux.conf"
+bind -n F5 source-file ~/.config/tmux/tmux.conf \; display "Config Reloaded from ~/.config/tmux.conf"
 # -- bindings ------------------------------------------------------------------
 
 # preserve tmux stock bindings,
