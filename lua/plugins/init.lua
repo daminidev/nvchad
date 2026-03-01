@@ -118,5 +118,29 @@ return {
         default_direction = "right",
       },
     },
-  }
+  },
+  {
+    "mfussenegger/nvim-dap",
+    keys = {
+      { "<F7>",       function() require('dap').step_into() end, desc = "DAP| 󰆹 | Step into" },
+      { "<F8>",       function() require('dap').continue() end,  desc = "DAP|  | Continue" },
+      { "<F9>",       function() require('dap').step_over() end, desc = "DAP| 󰆷 | Step over" },
+      { "<F10>",      function() require('dap').step_out() end,  desc = "DAP| 󰆸 | Step out" },
+      { "<Leader>db", function() require('dap').toggle_breakpoint() end,  desc = "DAP|  | Toggle breakpoint" },
+    },
+    config = function()
+      require "configs.dap"
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    keys = {
+      { "<Leader>du", function() require('dapui').toggle() end, desc = "DAPUI|   Toggle UI" },
+      { "<Leader>dh", function() require('dap.ui.widgets').hover() end, desc = "DAPUI|   Hover variable" },
+    },
+    config = function()
+      require 'configs.dapui'
+    end,
+  },
 }
