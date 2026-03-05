@@ -16,7 +16,22 @@ bind -n F2 previous-window
 bind -n F3 next-window
 bind -n F4 last-window
 bind -n F5 source-file ~/.config/tmux/tmux.conf \; display "Config Reloaded from ~/.config/tmux.conf"
-# -- bindings ------------------------------------------------------------------
+
+# ====================================================================
+# Nested Tmux Toggle (F12)
+# ====================================================================
+
+# Press F12 to disable local tmux bindings
+bind -T root F12 \
+    set prefix None \;\
+    set key-table off \;\
+    refresh-client -S
+
+# Press F12 again to restore local tmux bindings
+bind -T off F12 \
+    set -u prefix \;\
+    set -u key-table \;\
+    refresh-client -S
 
 # preserve tmux stock bindings,
 # while adding bindings that don't conflict with these stock bindings
@@ -285,7 +300,8 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{username}
 #     - #{username_ssh}
 #tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_left="  #S | 󱑂 %R |   \uE0B1"
+remote_info="#{?#{==:#{client_key_table},off},#[fg=#bec079]#[bg=#a70000]#[bold] REMOTE   #[default]#[fg=#a70000]#[bg=#ffaf00],} "
+tmux_conf_theme_status_left="$remote_info  #S | 󱑂 %R |   \uE0B1"
 tmux_conf_theme_status_right="󰟙 #{pretty_pane_current_path}  #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} ,  %d %b | #{username}#{root} | #{hostname} "
 
 # status left style
@@ -413,11 +429,12 @@ set -g mode-keys vi
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
 # unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
-set -g prefix2 C-Space
-bind C-Space send-prefix -2
+#set -g prefix2 C-Space
+#bind C-Space send-prefix -2
+
+set -g prefix C-Space
+bind C-Space send-prefix
+unbind C-b
 
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
