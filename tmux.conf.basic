@@ -26,4 +26,3 @@ set -g window-status-current-format " #I #W#{?#{||:#{window_bell_flag},#{window_
 
 # --- Window with a Bell (Alert) ---
 set -g window-status-bell-style "fg=#080808,bg=#a70000,bold"
-
