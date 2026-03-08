@@ -23,6 +23,21 @@ return {
   },
 
   {
+    "telescope.nvim",
+
+    opts = function ()
+      local conf = require "nvchad.configs.telescope"
+      local actions = require "telescope.actions"
+
+      conf.defaults.mappings.i = conf.defaults.mappings.i or {}
+      conf.defaults.mappings.i["<C-Del>"] = actions.delete_buffer
+      conf.defaults.mappings.n["<C-Del>"] = actions.delete_buffer
+      
+      return conf
+    end
+  },
+
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
