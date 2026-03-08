@@ -8,6 +8,7 @@ require "nvchad.options"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.conceallevel = 1 -- hide / show some things like checkbox [ ] : usefull for markdown and needed by obsidian plugin
 vim.o.statuscolumn = table.concat({
   "%s%#Comment#%C",
   -- Col absolute

@@ -1,15 +1,19 @@
 local backend = "sixel" -- Default for WezTerm / others
+local utils = require('utils')
+
 if os.getenv("KITTY_PID") or os.getenv("TERM") == "xterm-kitty" then
   backend = "kitty"
 end
 
 return {
+
   {
     "nvim-tree/nvim-tree.lua",
     opts = function()
       return require "configs.nvimtree"
     end
   },
+
   {
     "rmagatti/auto-session",
     lazy = false,
@@ -17,23 +21,27 @@ return {
       return require "configs/autosession"
     end
   },
+
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
+
   {
     "hrsh7th/nvim-cmp",
     opts = function()
       return require "configs.cmp"
     end
   },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
   },
+  
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -44,29 +52,28 @@ return {
       },
     },
   },
+
   {
     "tpope/vim-fugitive",
     lazy = false
   },
+
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
     ft = { 'markdown', 'norg', 'rmd', 'org' },
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
     opts = {},
   },
+
   {
     "tpope/vim-fugitive",
     lazy = false,
   },
+
   {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
     dependencies = {
-      -- include a picker of your choice, see picker section for more details
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
@@ -81,9 +88,10 @@ return {
       },
     },
   },
+
   {
     "3rd/image.nvim",
-    build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+    build = false,
     lazy = false,
     opts = {
       processor = "magick_cli",
@@ -100,25 +108,22 @@ return {
       }
     }
   },
+
   {
     'stevearc/aerial.nvim',
-    -- This ensures the plugin stays completely unloaded until you trigger the command
     cmd = { "AerialToggle", "AerialNavToggle", "AerialInfo" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
     },
     opts = {
-      -- Optional: By default, aerial tries LSP first, then Treesitter.
-      -- This is perfect for your PHP and JS stack.
       backends = { "lsp", "treesitter", "markdown", "man" },
-
-      -- Optional: visually align the aerial window to the right
       layout = {
         default_direction = "right",
       },
     },
   },
+
   {
     "mfussenegger/nvim-dap",
     keys = {
@@ -132,6 +137,7 @@ return {
       require "configs.dap"
     end,
   },
+
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -143,4 +149,13 @@ return {
       require 'configs.dapui'
     end,
   },
+
+  {
+    "obsidian-nvim/obsidian.nvim",
+    enabled = utils.is_obsidian_available(),
+    version = "*",
+    cmd = { "Obsidian" },
+    ft = "markdown",
+    opts = require 'configs.obsidian',
+  }
 }
