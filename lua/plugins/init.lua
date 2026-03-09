@@ -32,7 +32,7 @@ return {
       conf.defaults.mappings.i = conf.defaults.mappings.i or {}
       conf.defaults.mappings.i["<C-Del>"] = actions.delete_buffer
       conf.defaults.mappings.n["<C-Del>"] = actions.delete_buffer
-      
+
       return conf
     end
   },
@@ -56,17 +56,19 @@ return {
       require "configs.lspconfig"
     end,
   },
-  
+
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css", "javascript", "typescript", "tsx",
-        "php", "phpdoc" -- Add these here
+        -- Essentiels NvChad (ne pas retirer)
+        "vim", "lua", "vimdoc", "html", "css",
+        -- Ma Stack
+        "javascript", "typescript", "tsx",
+        "php", "phpdoc", "markdown_inline", "markdown", "twig" 
       },
     },
-  },
+  },  
 
   {
     "tpope/vim-fugitive",
@@ -75,7 +77,7 @@ return {
 
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
     ft = { 'markdown', 'norg', 'rmd', 'org' },
     opts = {},
   },
