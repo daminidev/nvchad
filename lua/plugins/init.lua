@@ -44,10 +44,8 @@ return {
   },
 
   {
-    "hrsh7th/nvim-cmp",
-    opts = function()
-      return require "configs.cmp"
-    end
+    "FelipeLema/cmp-async-path",
+    url = "https://github.com/FelipeLema/cmp-async-path",
   },
 
   {
@@ -87,44 +85,44 @@ return {
     lazy = false,
   },
 
-  {
-    "kawre/leetcode.nvim",
-    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    cmd = "Leet",
-    opts = {
-      lang = "php",
-      image_support = true,
-      injector = {
-        ["php"] = {
-          before = { "<?php", "" } -- Injects the tag and a blank line at the very top
-        }
-      },
-    },
-  },
+--  {
+--    "kawre/leetcode.nvim",
+--    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+--    dependencies = {
+--      "nvim-lua/plenary.nvim",
+--      "MunifTanjim/nui.nvim",
+--    },
+--    cmd = "Leet",
+--    opts = {
+--      lang = "php",
+--      image_support = true,
+--      injector = {
+--        ["php"] = {
+--          before = { "<?php", "" } -- Injects the tag and a blank line at the very top
+--        }
+--      },
+--    },
+--  },
 
-  {
-    "3rd/image.nvim",
-    build = false,
-    lazy = false,
-    opts = {
-      processor = "magick_cli",
-      backend = backend,
-      tmux_show_only_in_active_window = true,
-      integrations = {
-        markdown = {
-          enabled = true,
-          clear_in_insert_mode = false,
-          download_remote_images = true,
-          only_render_image_at_cursor = false,
-          filetypes = { "markdown", "rmd" }, 
-        }
-      }
-    }
-  },
+--  {
+--    "3rd/image.nvim",
+--    build = false,
+--    lazy = false,
+--    opts = {
+--      processor = "magick_cli",
+--      backend = backend,
+--      tmux_show_only_in_active_window = true,
+--      integrations = {
+--        markdown = {
+--          enabled = true,
+--          clear_in_insert_mode = false,
+--          download_remote_images = true,
+--          only_render_image_at_cursor = false,
+--          filetypes = { "markdown", "rmd" }, 
+--        }
+--      }
+--    }
+--  },
 
   {
     'stevearc/aerial.nvim',
